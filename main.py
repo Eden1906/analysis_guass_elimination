@@ -71,15 +71,13 @@ def guass(a, size):
     print()
     print("     L*U                 A")
     prettyPrint(mulMtrx(l, u), a)
-    print("from here, I invert l and u and then mul it with vector b")
-    invertL = invertMtrx(l,createIdentityMatrix(3))
-    invertU = invertMtrx(u,createIdentityMatrix(3))
+    print("from here, invers lxu and mul it with vector b")
     b = [[7],[2],[5]]
-    print("invert l :",invertL)
-    print("invert u : ",invertU)
-    muluANDl=multiplierNonEqualMtrx(invertL,invertU)
+    muluANDl=multiplierNonEqualMtrx(l,u)
+    inverslANDu=invertMtrx(muluANDl,createIdentityMatrix(3))
+    print(inverslANDu)
     print("the solution is :")
-    print(multiplierNonEqualMtrx(muluANDl,b))
+    print(multiplierNonEqualMtrx(inverslANDu,b))
 
 def invertMtrx(a,I):
     for fd in range(len(a)):
@@ -119,7 +117,6 @@ print((rnd.choice(edenID)%30)+19)
 
 A = [[1,2,-2],[1,1,1],[2,2,1]]
 guass(A,3)
-
 
 
 
